@@ -10,14 +10,16 @@ def avail_check(soup):
     available = available.find("span")
     return available.text.strip()
 
-if __name__ == '__main__':
-    link = "https://www.amazon.in/New-Apple-iPhone-12-64GB/dp/B08L5TGWD1/ref=sr_1_2?crid=ISGOFU233G7K"
-    HEADERS = ({'User-Agent':
-	            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',
-	            'Accept-Language': 'en-US, en;q=0.5'})
-    webpage = requests.get(link, headers=HEADERS)
-    soup = BeautifulSoup(webpage.content, "lxml")
-    print("Product Price =", price(soup))
-    print("Availability =", avail_check(soup))
+
+print("Hi, welcome to the price tracker")
+a = input("Please enter your name: ")
+link = input(f"Hi {a}, please enter the products url: ")
+HEADERS = ({'User-Agent':
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',
+            'Accept-Language': 'en-US, en;q=0.5'})
+webpage = requests.get(link, headers=HEADERS)
+soup = BeautifulSoup(webpage.content, "lxml")
+print("Product Price =", price(soup))
+print("Availability =", avail_check(soup))
 
 
